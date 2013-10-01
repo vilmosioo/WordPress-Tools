@@ -66,7 +66,7 @@ class Custom_Post{
 
 	}
 
-	protected function add_to_dashboard(){
+	public function add_to_dashboard(){
 		$post_type = get_post_type_object($this->slug);
 		$num_posts = wp_count_posts( $post_type->name );
 		$num = number_format_i18n( $num_posts->publish );
