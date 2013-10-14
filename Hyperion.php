@@ -39,7 +39,7 @@ class Hyperion{
 			
 			// add actions
 		add_action( 'wp_enqueue_scripts', array( &$this, 'add_scripts') );  
-		add_action( 'manage_media_custom_column', array( &$this, 'media_custom_columns', 0, 2));
+		add_action( 'manage_media_custom_column', array( &$this, 'media_custom_columns'), 0, 2);
 		
 		//add filters
 		add_filter( 'manage_upload_columns', array( &$this, 'upload_columns'));
@@ -56,7 +56,6 @@ class Hyperion{
 	function add_scripts(){
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'default', THEME_PATH.'/js/script.js', array( 'jquery' ), '1.0', true ); 
-		wp_enqueue_script( 'plugins', THEME_PATH.'/js/plugins.js', array( 'jquery' ), '1.0', true ); 
 		if(is_singular()){
 			wp_enqueue_script( 'comment-reply' ); 
 		}
