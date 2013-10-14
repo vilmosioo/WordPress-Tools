@@ -38,8 +38,8 @@ class Hyperion{
 		add_editor_style('css/editor-style.css');
 			
 			// add actions
-		add_action( 'wp_enqueue_scripts', array( &$this, 'add_scripts') );  
-		add_action( 'manage_media_custom_column', array( &$this, 'media_custom_columns', 0, 2));
+		add_action( 'wp_enqueue_scripts', array( &$this, 'add_scripts' ));  
+		add_action( 'manage_media_custom_column', array( &$this, 'media_custom_columns' ), 0, 2));
 		
 		//add filters
 		add_filter( 'manage_upload_columns', array( &$this, 'upload_columns'));
