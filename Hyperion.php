@@ -55,7 +55,6 @@ class Hyperion{
 	
 	function add_scripts(){
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'default', THEME_PATH.'/js/script.js', array( 'jquery' ), '1.0', true ); 
 		if(is_singular()){
 			wp_enqueue_script( 'comment-reply' ); 
 		}
