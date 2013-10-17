@@ -21,26 +21,26 @@ class Custom_Post{
 
 	protected function __construct($args = array('name' => 'Portfolio')) {
 		$args['labels'] = array_merge(
-					array(
+			array(
 				'name' => $args['name'],
 				'singular_name' => $args['name'],
 				'add_new' => 'Add New',
-				'add_new_item' => 'Add New Item',
+				'add_new_item' => 'Add New '. $args['name'],
 				'edit_item' => 'Edit '. $args['name'],
-				'new_item' => 'New'. $args['name'],
-				'all_items' => 'All '.Utils::pluralize($args['name']),
-				'view_item' => 'View Item',
+				'new_item' => 'New '. $args['name'],
+				'all_items' => 'All '. Utils::pluralize($args['name']),
+				'view_item' => 'View '. $args['name'],
 				'search_items' => 'Search '. $args['name'],
-				'not_found' =>  'No '.Utils::pluralize($args['name']).' found',
-				'not_found_in_trash' => 'No '.Utils::pluralize($args['name']).' found in Trash', 
+				'not_found' =>  'No '. Utils::pluralize($args['name']).' found',
+				'not_found_in_trash' => 'No '. Utils::pluralize($args['name']).' found in Trash', 
 				'parent_item_colon' => '',
 				'menu_name' => Utils::pluralize($args['name'])
 			),
-			(array)$args['labels'] 
+			isset($args['labels']) ? $args['labels'] : array()
 		);
 		$args['supports'] = array_merge(
-				array( 'title', 'editor', 'author', 'thumbnail', 'custom-fields'), 
-				(array)$args['supports']
+			array('title', 'editor', 'author', 'thumbnail', 'custom-fields'), 
+			isset($args['supports']) ? $args['supports'] : array()
 		);
 
 		$args = array_merge( array(
