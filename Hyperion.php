@@ -17,8 +17,6 @@
 *
 */
 
-if(class_exists('Hyperion')) return;
-
 // Define theme-wide constants
 define( 'THEME_PATH', get_bloginfo( 'stylesheet_directory' ) );
 define( 'HOME_URL', home_url() );

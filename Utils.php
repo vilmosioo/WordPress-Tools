@@ -4,9 +4,6 @@
 * Example usage: 
 *   Utils::post_thumbnail('full', 'class'); 
 */
-
-if(class_exists('Utils')) return;
-
 class Utils{
 	/*
 	* Return details about the last JSON error
@@ -42,7 +39,7 @@ class Utils{
 	*/
 
 	static function generate_slug($s = ""){
-		return strtolower(str_replace(" ", "-", $s));
+	return strtolower(str_replace(" ", "-", $s));
 	}
 
 	/* 

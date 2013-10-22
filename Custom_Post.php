@@ -9,8 +9,6 @@
 * Required: Utils.php
 */
 
-if(class_exists('Custom_Post')) return;
-
 require_once 'Utils.php';
 
 class Custom_Post{
