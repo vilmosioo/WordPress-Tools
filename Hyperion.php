@@ -48,9 +48,6 @@ class Hyperion{
 		add_filter( 'the_content', array( &$this, 'remove_thumbnail_dimensions' ), 10 );	
 		add_filter( 'the_content', array( &$this, 'filter_ptags_on_images' ));
 		add_filter( 'admin_footer_text', array( &$this, 'remove_footer_admin' ));
-		add_filter( "pre_update_option_category_base", array( &$this, "remove_blog_slug" ));
-		add_filter( "pre_update_option_tag_base", array( &$this, "remove_blog_slug" ));
-		add_filter( "pre_update_option_permalink_structure", array( &$this, "remove_blog_slug" ));
 	}
 	
 	function add_scripts(){
@@ -58,14 +55,6 @@ class Hyperion{
 		if(is_singular()){
 			wp_enqueue_script( 'comment-reply' ); 
 		}
-	}
-
-	// just check if the current structure begins with /blog/ remove that and return the stripped structure 
-	function remove_blog_slug($tag_cat_permalink){
-		if(!preg_match("/^\/blog\//",$tag_cat_permalink))
-		return $tag_cat_permalink;
-		$new_permalink=preg_replace ("/^\/blog\//","/",$tag_cat_permalink );
-		return $new_permalink;
 	}
 
 	// Customise the footer in admin area
