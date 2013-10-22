@@ -17,6 +17,8 @@
 
 require_once 'Utils.php';
 
+if(class_exists('Metabox')) return;
+
 class MetaBox{
 	
 	public static function create($args){

@@ -18,6 +18,8 @@
 
 require_once 'Utils.php';
 
+if(class_exists('Custom_Widget')) return;
+
 class Custom_Widget extends WP_Widget{
 	private $slug, $title, $description, $class;
 	private $fields;

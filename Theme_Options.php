@@ -23,6 +23,8 @@
 
 require_once 'Utils.php';
 
+if(class_exists('Theme_Options')) return;
+
 class Theme_Options{
 
 	protected $tabs;
