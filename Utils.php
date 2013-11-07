@@ -5,6 +5,30 @@
 *   Utils::post_thumbnail('full', 'class'); 
 */
 class Utils{
+	/* 
+	* Check the current post for the existence of a short code 
+	*/
+	static function has_shortcode($shortcode = '') {
+		
+		$post_to_check = get_post(get_the_ID());
+		
+		// false because we have to search through the post content first
+		$found = false;
+		
+		// if no short code was provided, return false
+		if (!$shortcode) {
+			return $found;
+		}
+		// check the post content for the short code
+		if ( stripos($post_to_check->post_content, '[' . $shortcode) !== false ) {
+			// we have found the short code
+			$found = true;
+		}
+		
+		// return our final results
+		return $found;
+	}
+
 	/*
 	* Return details about the last JSON error
 	*/
