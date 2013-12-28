@@ -120,7 +120,8 @@ class Utils{
 	}
 
 	/* 
-	* Prints out the current post attachments
+	* Prints out the current post attachments. 
+	* Works similarly to the gallery shortcode but simpler structure, and it allows for custom classes to be added.
 	* 
 	*/
 	static function post_attachments($title = '', $class = ''){
@@ -129,10 +130,7 @@ class Utils{
 			'numberposts'     => -1,
 			'post_parent' => get_the_ID()
 		));
-		$custom_fields = get_post_custom();
-		$url = $custom_fields['url'];
-		$github = $custom_fields['github'];
-
+		
 		if ( $attachments ) {
 			echo "<h3>$title</h3>";
 			foreach ( $attachments as $attachment ) {
@@ -142,7 +140,20 @@ class Utils{
 				echo "<img src='".$href[0]."' alt='".get_the_title()."'/>"; 
 				echo "</a>";
 			}
+			echo '<div class="clear"></div>';
 		}
+	}
+
+	/*
+	* Prints out the single post navigation.
+	*/
+	static function post_navigation(){
+		?>
+		<aside class='aside clearfix' id='post-navigation'>
+			<span class='fleft'><?php previous_post_link(); ?></span> 
+			<span class='fright'><?php next_post_link(); ?></span> 
+		</aside>
+		<?php
 	}
 
 	/* 
