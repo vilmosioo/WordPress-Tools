@@ -120,6 +120,32 @@ class Utils{
 	}
 
 	/* 
+	* Prints out the current post attachments
+	* 
+	*/
+	static function post_attachments($title = '', $class = ''){
+		$attachments = get_posts(array(	
+			'post_type' => 'attachment',
+			'numberposts'     => -1,
+			'post_parent' => get_the_ID()
+		));
+		$custom_fields = get_post_custom();
+		$url = $custom_fields['url'];
+		$github = $custom_fields['github'];
+
+		if ( $attachments ) {
+			echo "<h3>$title</h3>";
+			foreach ( $attachments as $attachment ) {
+				$href = wp_get_attachment_image_src( $attachment->ID, 'thumbnail'); 
+				$full = wp_get_attachment_image_src( $attachment->ID, 'full');
+				echo "<a class='$class' href='".$full[0]."' target=\"_blank\" rel=\"lightbox\">";
+				echo "<img src='".$href[0]."' alt='".get_the_title()."'/>"; 
+				echo "</a>";
+			}
+		}
+	}
+
+	/* 
 	* Get a custom length excerpt
 	*/
 	static function custom_excerpt($s, $length){
