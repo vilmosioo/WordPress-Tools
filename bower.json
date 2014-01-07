@@ -1,0 +1,11 @@
+{
+  "name": "WordPress-Tools",
+  "version": "0.0.8",
+  "description": "Set of utility classes for WordPress development",
+  "license": "GPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}
