@@ -9,27 +9,27 @@ class Utils{
 	/**
 	* Functions to encode/decode HTML in array and objects. Thanks to http://stackoverflow.com/questions/14861354/apply-html-entity-decode-to-objects-and-arrays-using-recursion
 	*/
-	function encode($data) {
+	static function encode($data) {
 		if (is_array($data)) {
-			return array_map(array($this,'encode'), $data);
+			return array_map(array(self,'encode'), $data);
 		}
 		if (is_object($data)) {
 			$tmp = clone $data; // avoid modifing original object
 			foreach ( $data as $k => $var )
-				$tmp->{$k} = $this->encode($var);
+				$tmp->{$k} = self::encode($var);
 			return $tmp;
 		}
 		return htmlentities($data);
 	}
 
-	function decode($data) {
+	static function decode($data) {
 		if (is_array($data)) {
-			return array_map(array($this,'decode'), $data);
+			return array_map(array(self,'decode'), $data);
 		}
 		if (is_object($data)) {
 			$tmp = clone $data; // avoid modifing original object
 			foreach ( $data as $k => $var )
-				$tmp->{$k} = $this->decode($var);
+				$tmp->{$k} = self::decode($var);
 			return $tmp;
 		}
 		return html_entity_decode($data);
