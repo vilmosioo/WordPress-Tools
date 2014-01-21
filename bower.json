@@ -1,6 +1,6 @@
 {
   "name": "WordPress-Tools",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Set of utility classes for WordPress development",
   "license": "GPL",
   "ignore": [

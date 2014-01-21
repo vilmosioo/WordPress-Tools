@@ -5,6 +5,36 @@
 *   Utils::post_thumbnail('full', 'class'); 
 */
 class Utils{
+
+	/**
+	* Functions to encode/decode HTML in array and objects. Thanks to http://stackoverflow.com/questions/14861354/apply-html-entity-decode-to-objects-and-arrays-using-recursion
+	*/
+	function encode($data) {
+		if (is_array($data)) {
+			return array_map(array($this,'encode'), $data);
+		}
+		if (is_object($data)) {
+			$tmp = clone $data; // avoid modifing original object
+			foreach ( $data as $k => $var )
+				$tmp->{$k} = $this->encode($var);
+			return $tmp;
+		}
+		return htmlentities($data);
+	}
+
+	function decode($data) {
+		if (is_array($data)) {
+			return array_map(array($this,'decode'), $data);
+		}
+		if (is_object($data)) {
+			$tmp = clone $data; // avoid modifing original object
+			foreach ( $data as $k => $var )
+				$tmp->{$k} = $this->decode($var);
+			return $tmp;
+		}
+		return html_entity_decode($data);
+	}
+
 	/* 
 	* Check the current post for the existence of a short code 
 	*/
